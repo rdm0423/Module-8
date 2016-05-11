@@ -10,10 +10,9 @@ import Foundation
 
 class SongController {
     
-    // allows anywhere in app when we do SongController.createSong
     static func createSong(name: String, artist: String, playlist: Playlist) {
-        
-        
+        let song = Song(name: name, artist: artist)
+        PlaylistController.sharedController.addSongToPlaylist(song, playlist: playlist)
     }
     
     

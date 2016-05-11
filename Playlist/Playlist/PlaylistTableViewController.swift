@@ -15,12 +15,21 @@ class PlaylistTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Looks for single or multiple taps.
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaylistTableViewController.dismissKeyboard))
+//        view.addGestureRecognizer(tap)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,7 +41,10 @@ class PlaylistTableViewController: UITableViewController {
     
     @IBAction func addPlaylistButtonTapped(sender: AnyObject) {
     
-    
+        guard let playlist = playlistTextField.text where playlist.characters.count > 0 else { return }
+        PlaylistController.sharedController.addPlaylist(playlist)
+        playlistTextField.text = ""
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -44,21 +56,25 @@ class PlaylistTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return PlaylistController.sharedController.mocData().count
+        return PlaylistController.sharedController.playlists.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("playlistCell", forIndexPath: indexPath)
         
-        let playlist = PlaylistController.sharedController.mocData()[indexPath.row].title
+        let playlist = PlaylistController.sharedController.playlists[indexPath.row]
         
-        cell.textLabel?.text = playlist
+        cell.textLabel?.text = playlist.title
+        cell.detailTextLabel?.text = "\(playlist.songs.count) songs"
         
-
         return cell
     }
- 
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -95,14 +111,20 @@ class PlaylistTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "toSongSegue" {
+            let songTVC = segue.destinationViewController as? SongTableViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let playlist = PlaylistController.sharedController.playlists[indexPath.row]
+                songTVC?.playlist = playlist
+            }
+        }
     }
-    */
-
 }

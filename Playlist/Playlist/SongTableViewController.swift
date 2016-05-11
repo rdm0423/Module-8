@@ -10,6 +10,8 @@ import UIKit
 
 class SongTableViewController: UITableViewController {
 
+    var playlist: Playlist?
+    
     @IBOutlet weak var songNameTextField: UITextField!
     @IBOutlet weak var artistNameTextField: UITextField!
     
@@ -17,11 +19,21 @@ class SongTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        //Looks for single or multiple taps.
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SongTableViewController.dismissKeyboard))
+//        view.addGestureRecognizer(tap)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,25 +45,38 @@ class SongTableViewController: UITableViewController {
     
     @IBAction func addSongButtonPressed(sender: AnyObject) {
     
+        guard let playlist = playlist, let song = songNameTextField.text, let artist = artistNameTextField.text where song.characters.count > 0 && artist.characters.count > 0 else { return }
+        
+        SongController.createSong(song, artist: artist, playlist: playlist)
+        songNameTextField.text = ""
+        artistNameTextField.text = ""
+        tableView.reloadData()
     
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        // optional unwrap: nil coalescing - if playlists exist return those, if they don't (??) return (0)
+        return playlist?.songs.count ?? 0
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("songCell", forIndexPath: indexPath)
-
+        
+        if let song = playlist?.songs[indexPath.row] {
+            
+            cell.textLabel?.text = song.name
+            cell.detailTextLabel?.text = song.artist
+            
+        }
         
 
         return cell
