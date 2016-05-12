@@ -16,9 +16,7 @@ class PlaylistTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Looks for single or multiple taps.
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaylistTableViewController.dismissKeyboard))
-//        view.addGestureRecognizer(tap)
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -84,17 +82,21 @@ class PlaylistTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            
+            let playlist = PlaylistController.sharedController.playlists[indexPath.row]
+            PlaylistController.sharedController.removePlaylist(playlist)
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+ 
 
     /*
     // Override to support rearranging the table view.

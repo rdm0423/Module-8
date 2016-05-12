@@ -20,9 +20,7 @@ class SongTableViewController: UITableViewController {
         super.viewDidLoad()
 
         
-        //Looks for single or multiple taps.
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SongTableViewController.dismissKeyboard))
-//        view.addGestureRecognizer(tap)
+
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
