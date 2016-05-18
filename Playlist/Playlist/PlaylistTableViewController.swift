@@ -16,23 +16,11 @@ class PlaylistTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Action Buttons
@@ -63,7 +51,7 @@ class PlaylistTableViewController: UITableViewController {
         
         let playlist = PlaylistController.sharedController.playlists[indexPath.row]
         
-        cell.textLabel?.text = playlist.title
+        cell.textLabel?.text = playlist.name
         cell.detailTextLabel?.text = "\(playlist.songs.count) songs"
         
         return cell
@@ -90,8 +78,8 @@ class PlaylistTableViewController: UITableViewController {
             
             let playlist = PlaylistController.sharedController.playlists[indexPath.row]
             PlaylistController.sharedController.removePlaylist(playlist)
-            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    

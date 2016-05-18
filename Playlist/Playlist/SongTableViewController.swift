@@ -18,9 +18,10 @@ class SongTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-
+        if let playlist = playlist {
+            self.title = playlist.name
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -69,14 +70,13 @@ class SongTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("songCell", forIndexPath: indexPath)
         
-        if let song = playlist?.songs[indexPath.row] {
+        if let playlist = playlist,
+        song = playlist.songs.objectAtIndex(indexPath.row) as? Song {
             
-            cell.textLabel?.text = song.name
+            cell.textLabel?.text = song.title
             cell.detailTextLabel?.text = song.artist
             
         }
-        
-
         return cell
     }
  

@@ -7,63 +7,58 @@
 //
 
 import Foundation
+import CoreData
 
 class PlaylistController {
-    
-    private let kPlaylists = "storedPlaylists"
     
     // static (Singleton) allows for using PlaylistController outside of the class globally
     static let sharedController = PlaylistController()
     
-    var playlists: [Playlist] = []
-    
-    init() {
-        loadFromPersistentStorage()
+    var playlists: [Playlist] {
+        
+        let request = NSFetchRequest(entityName: "Playlist")
+        
+        let managedObjectContext = Stack.sharedStack.managedObjectContext
+        
+        return (try? managedObjectContext.executeFetchRequest(request)) as? [Playlist] ?? []
+        
+//        do {
+//            return try managedObjectContext.executeFetchRequest(request) as! [Playlist]
+//        } catch {
+//            return []
+//        }
     }
     
     func addPlaylist(name: String) {
         
-        let playlist = Playlist(title: name)
-        playlists.append(playlist)
-        
+       let _ = Playlist(name: name)
         saveToPersistentStorage()
     }
     
     func removePlaylist(playlist: Playlist) {
         
-        if let playlistIndex = playlists.indexOf(playlist) {
-            playlists.removeAtIndex(playlistIndex)
+        if let modelObjectContext = playlist.managedObjectContext {
+            modelObjectContext.deleteObject(playlist)
             saveToPersistentStorage()
         }
     }
     
-    func addSongToPlaylist(song: Song, playlist: Playlist) {
-        
-        playlist.songs.append(song)
-        saveToPersistentStorage()
-    }
-    
-    func removeSongFromPlaylist(song: Song, playlist: Playlist) {
-        
-//        if let songIndex = playlists.indexOf(song) {
-//            playlist.removeAtIndex(playlistIndex)
-//            saveToPersistentStorage()
-//        }
-    }
-    
     func saveToPersistentStorage() {
         
-        NSUserDefaults.standardUserDefaults().setObject(playlists.map{$0.dictionaryCopy}, forKey: kPlaylists)
-    }
-    
-    func loadFromPersistentStorage() {
+        let managedObjectContext = Stack.sharedStack.managedObjectContext
         
-        guard let playlistsDictionaryArray = NSUserDefaults.standardUserDefaults().objectForKey(kPlaylists) as? [[String:AnyObject]] else {
-            
-            return
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("ERROR SAVING")
         }
-        playlists = playlistsDictionaryArray.flatMap{Playlist(dictionary: $0)}
     }
     
-
+    
 }
+
+
+
+
+
+

@@ -10,10 +10,16 @@ import Foundation
 
 class SongController {
     
-    static func createSong(name: String, artist: String, playlist: Playlist) {
-        let song = Song(name: name, artist: artist)
-        PlaylistController.sharedController.addSongToPlaylist(song, playlist: playlist)
+    static func createSong(title: String, artist: String, playlist: Playlist) {
+        _ = Song(title: title, artist: artist, playlist: playlist)
+        PlaylistController.sharedController.saveToPersistentStorage()
     }
     
-    
+    static func deleteSong(song: Song) {
+        
+        if let modelObjectContext = song.managedObjectContext {
+            modelObjectContext.deleteObject(song)
+            PlaylistController.sharedController.saveToPersistentStorage()
+        }
+    }
 }

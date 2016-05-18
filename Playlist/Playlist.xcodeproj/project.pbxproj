@@ -13,10 +13,14 @@
 		FF43A2A11CE392FE0077C0F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF43A29F1CE392FE0077C0F2 /* LaunchScreen.storyboard */; };
 		FF43A2A91CE39AD60077C0F2 /* PlaylistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43A2A81CE39AD60077C0F2 /* PlaylistTableViewController.swift */; };
 		FF43A2AB1CE39AED0077C0F2 /* SongTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43A2AA1CE39AED0077C0F2 /* SongTableViewController.swift */; };
-		FF43A2AD1CE3A09E0077C0F2 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43A2AC1CE3A09E0077C0F2 /* Song.swift */; };
-		FF43A2AF1CE3A0B20077C0F2 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43A2AE1CE3A0B20077C0F2 /* Playlist.swift */; };
 		FF43A2B31CE3A55A0077C0F2 /* SongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43A2B21CE3A55A0077C0F2 /* SongController.swift */; };
 		FF43A2B51CE3A5690077C0F2 /* PlaylistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43A2B41CE3A5690077C0F2 /* PlaylistController.swift */; };
+		FF8C4B401CED1BE100A62DCC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4B3E1CED1BE100A62DCC /* Model.xcdatamodeld */; };
+		FF8C4B451CED2ECB00A62DCC /* Song+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4B411CED2ECB00A62DCC /* Song+CoreDataProperties.swift */; };
+		FF8C4B461CED2ECB00A62DCC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4B421CED2ECB00A62DCC /* Song.swift */; };
+		FF8C4B471CED2ECB00A62DCC /* Playlist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4B431CED2ECB00A62DCC /* Playlist+CoreDataProperties.swift */; };
+		FF8C4B481CED2ECB00A62DCC /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4B441CED2ECB00A62DCC /* Playlist.swift */; };
+		FF8C4B4B1CED2F5F00A62DCC /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C4B4A1CED2F5F00A62DCC /* Stack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +32,14 @@
 		FF43A2A21CE392FE0077C0F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF43A2A81CE39AD60077C0F2 /* PlaylistTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewController.swift; sourceTree = "<group>"; };
 		FF43A2AA1CE39AED0077C0F2 /* SongTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTableViewController.swift; sourceTree = "<group>"; };
-		FF43A2AC1CE3A09E0077C0F2 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		FF43A2AE1CE3A0B20077C0F2 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		FF43A2B21CE3A55A0077C0F2 /* SongController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongController.swift; sourceTree = "<group>"; };
 		FF43A2B41CE3A5690077C0F2 /* PlaylistController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistController.swift; sourceTree = "<group>"; };
+		FF8C4B3F1CED1BE100A62DCC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		FF8C4B411CED2ECB00A62DCC /* Song+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Song+CoreDataProperties.swift"; path = "../Song+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FF8C4B421CED2ECB00A62DCC /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Song.swift; path = ../Song.swift; sourceTree = "<group>"; };
+		FF8C4B431CED2ECB00A62DCC /* Playlist+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Playlist+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		FF8C4B441CED2ECB00A62DCC /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = SOURCE_ROOT; };
+		FF8C4B4A1CED2F5F00A62DCC /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,7 @@
 				FF43A2B11CE3A0DC0077C0F2 /* ViewController */,
 				FF43A2B61CE3A56E0077C0F2 /* Model Controller */,
 				FF43A2B01CE3A0BE0077C0F2 /* Model */,
+				FF8C4B4A1CED2F5F00A62DCC /* Stack.swift */,
 				FF43A29A1CE392FE0077C0F2 /* Main.storyboard */,
 				FF43A29D1CE392FE0077C0F2 /* Assets.xcassets */,
 				FF43A29F1CE392FE0077C0F2 /* LaunchScreen.storyboard */,
@@ -79,8 +88,11 @@
 		FF43A2B01CE3A0BE0077C0F2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FF43A2AE1CE3A0B20077C0F2 /* Playlist.swift */,
-				FF43A2AC1CE3A09E0077C0F2 /* Song.swift */,
+				FF8C4B411CED2ECB00A62DCC /* Song+CoreDataProperties.swift */,
+				FF8C4B421CED2ECB00A62DCC /* Song.swift */,
+				FF8C4B431CED2ECB00A62DCC /* Playlist+CoreDataProperties.swift */,
+				FF8C4B441CED2ECB00A62DCC /* Playlist.swift */,
+				FF8C4B3E1CED1BE100A62DCC /* Model.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -97,8 +109,8 @@
 		FF43A2B61CE3A56E0077C0F2 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FF43A2B21CE3A55A0077C0F2 /* SongController.swift */,
 				FF43A2B41CE3A5690077C0F2 /* PlaylistController.swift */,
+				FF43A2B21CE3A55A0077C0F2 /* SongController.swift */,
 			);
 			name = "Model Controller";
 			sourceTree = "<group>";
@@ -175,12 +187,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF43A2B31CE3A55A0077C0F2 /* SongController.swift in Sources */,
-				FF43A2AD1CE3A09E0077C0F2 /* Song.swift in Sources */,
 				FF43A2971CE392FE0077C0F2 /* AppDelegate.swift in Sources */,
+				FF8C4B451CED2ECB00A62DCC /* Song+CoreDataProperties.swift in Sources */,
 				FF43A2AB1CE39AED0077C0F2 /* SongTableViewController.swift in Sources */,
+				FF8C4B461CED2ECB00A62DCC /* Song.swift in Sources */,
+				FF8C4B4B1CED2F5F00A62DCC /* Stack.swift in Sources */,
 				FF43A2A91CE39AD60077C0F2 /* PlaylistTableViewController.swift in Sources */,
-				FF43A2AF1CE3A0B20077C0F2 /* Playlist.swift in Sources */,
+				FF8C4B471CED2ECB00A62DCC /* Playlist+CoreDataProperties.swift in Sources */,
 				FF43A2B51CE3A5690077C0F2 /* PlaylistController.swift in Sources */,
+				FF8C4B401CED1BE100A62DCC /* Model.xcdatamodeld in Sources */,
+				FF8C4B481CED2ECB00A62DCC /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,8 +346,23 @@
 				FF43A2A71CE392FE0077C0F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF8C4B3E1CED1BE100A62DCC /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF8C4B3F1CED1BE100A62DCC /* Model.xcdatamodel */,
+			);
+			currentVersion = FF8C4B3F1CED1BE100A62DCC /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = ../Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FF43A28B1CE392FE0077C0F2 /* Project object */;
 }
